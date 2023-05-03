@@ -1,4 +1,4 @@
-const mdLinks = require('../index.js');
+const {mdLinks} = require('../index.js');
 
 
 describe('mdLinks', () => {
@@ -6,10 +6,13 @@ describe('mdLinks', () => {
   it('should...', () => {
     console.log('FIX ME!');
   });
+  it('devolver promesa', () => {
+    expect(mdLinks()).toBe(typeof Promise);
+});
+it("Debe recahazar cuando el path no existe"), () => {
+  return mdLinks("/estepath/no/existe.md").catch((error) => {
+    expect(error).toBe("la ruta no existe");
+})
 
 });
-it('devolver promesa', () => {
-  expect(mdLinks()).toBe(typeof Promise);
-});
 
-});
