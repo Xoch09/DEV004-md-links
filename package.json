@@ -1,6 +1,7 @@
 {
   "name": "md-links",
   "version": "0.1.0",
+  "type": "module",
   "engines": {
     "node": ">=16.x"
   },
@@ -10,7 +11,12 @@
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
   },
   "scripts": {
-    "test": "jest -- coverage "
-  
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0"
   }
 }
