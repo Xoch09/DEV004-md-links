@@ -39,4 +39,4 @@ export function printFilesInDirectory(directoryPath) {
 
 const userPath = process.argv[2];
 printFilesInDirectory(userPath);
-
+//xoch
