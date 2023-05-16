@@ -1,5 +1,5 @@
 //cosas pequeñas
-import fs from "fs";
+import fs from "fs"; 
 import path from "path"
 
 //printFilesDirectory para el final, considera que solo vas a evaluar que recibes 01 archivo
