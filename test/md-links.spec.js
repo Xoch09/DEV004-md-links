@@ -1,40 +1,31 @@
-import fs from 'fs';
-import path from 'path';
-import { mdLinks } from './mdLinks';
+import { pathExists, isMD } from "./api.js";
+import { mdLinks } from "./mdLinks.js";
 
-// Mock de la función fs.readFile para simular su comportamiento
-jest.mock('fs', () => ({
-  readFile: (filePath, encoding, callback) => {
-    if (filePath === 'existing.md') {
-      const fileContent = `
-        [Link 1](https://example.com)
-        [Link 2](https://example.org)
-      `;
-      callback(null, fileContent);
-    } else {
-      const error = new Error('File not found');
-      callback(error, null);
-    }
-  },
-}));
+describe("mdLinks", () => {
+  // Mock de la función pathExists
+  jest.mock("./api.js", () => ({
+    pathExists: jest.fn(),
+    isMD: jest.fn(),
+  }));
 
-describe('mdLinks', () => {
-  it('should log the found links when given a valid .md file', () => {
-    const consoleSpy = jest.spyOn(console, 'log');
-    const filePath = 'existing.md';
-    mdLinks('file.md', filePath);
-    expect(consoleSpy).toHaveBeenCalledWith(`Nombre:Link 1 \n Link: https://example.com \n en Ruta: ${filePath}\n`);
-    expect(consoleSpy).toHaveBeenCalledWith(`Nombre:Link 2 \n Link: https://example.org \n en Ruta: ${filePath}\n`);
+  it("debería resolver la promesa si el path existe y es un archivo MD", () => {
+    // Mock de pathExists para que retorne true
+    pathExists.mockReturnValue(true);
+    // Mock de isMD para que retorne true
+    isMD.mockReturnValue(true);
+
+    return mdLinks("README.md").then(() => {
+      expect(pathExists).toHaveBeenCalledWith("README.md");
+      expect(isMD).toHaveBeenCalledWith("README.md");
+      expect(console.log).toHaveBeenCalledWith("Si existe");
+      expect(console.log).toHaveBeenCalledWith("Si es MD");
+    });
   });
 
-  it('should log an error message when given a non-existent file', () => {
-    const consoleErrorSpy = jest.spyOn(console, 'error');
-    const filePath = 'nonexistent.md';
-    mdLinks('file.md', filePath);
-    expect(consoleErrorSpy).toHaveBeenCalledWith(`Error leyendo archivo ${filePath}: Error: File not found`);
+  it("debería rechazar la promesa si el path no existe", () => {
+    // Mock de pathExists para que retorne false
+    pathExists.mockReturnValue(false);
+
+    return expect(mdLinks("README.md")).rejects.toEqual("No existe");
   });
 });
-
-
-   
-
