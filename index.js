@@ -1,7 +1,9 @@
 //importa leer, escribir, archivos directorios
-import fs from 'fs'; 
+import { error, log } from 'console';
+import fs, { link } from 'fs'; 
 //Importar para manipular rutas de archivos y directorios
 import path, { resolve } from 'path';
+import axios from 'axios';
 
 //file: archivo
 //filepath:rutaarchivos
@@ -18,14 +20,49 @@ export function mdLinks(file ) {
     //3.función de devolución de llamada (callback) se ejecuta cuando se complete la lectura de archivo.
   readMd(pathResolve).then((res)=>{
     console.log(res)
-    // recorrer res for, while, map
-    // hacer peticon http (fetch)
-    
+    // **************************recorrer res for, while, map*******************************
+for(let i=0; i< res.length; i++){
+ console.log("----------------------------------------------------------------");
+  console.log("Nombre:" + res[i].nombre);
+  console.log("Link:" + res[i].link);
+  console.log("Ruta:" + res[i].ruta);
+}
+    //************************************************************************** */
+// hacer peticon http (fetch)
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++//
   }).catch((error)=>console.log(error))
   }else{
     console.log('Archivo invalido, prueba con un archivo md');
   }
 }
+//+++++++++++++++++++++++++++++++++++++++++++AQUI PETICIÓN a HTTP PARA NO CORTAR FUNCION++++++++++++++++++++++++++++++++++++++++//
+/*for(let i=0; i< res.length; i++){
+  fetch(res[i].link).then((res)=>{
+    console.log("---------------");
+    console.log("nombre:" + res[i].nombre);
+    console.log("link:" + res[i].link);
+    console.log("ruta:" + res[i].ruta);
+    console.log("status code: $ {response.status}");
+    console.log("status mesage: $ {response.statusText}");
+  })
+  .catch((error)=>{
+    console.log("--------------------");
+    console.log("nombre:" + res[i].nombre);
+    console.log("link:"+ res[i].link)
+    console.log("ruta:"+ res[i].ruta)
+    console.log("error:", error.message);
+  })
+}*/
+axios.get(link).then((respuesta) => {
+  console.log(respuesta.file)
+})
+.catch((error)=> {
+  console.log(error);
+})
+  
+
+//*******************************************+++AQUI TERMINA*************************************************************//
 const readMd = (file)=>{
   return new Promise((resolve, reject)=>{
     fs.readFile(file, 'utf8', (err, data) => {
@@ -44,7 +81,7 @@ const readMd = (file)=>{
       const arrayUrl = []
       while ((match = regex.exec(data))) {
         //exec devuelve un array o un null[{..}, {..}]
-        arrayUrl.push({
+        arrayUrl.push ({
           nombre: match[1],
           link: match[2],
           ruta: file
@@ -88,3 +125,4 @@ const userPath = process.argv[2];
 // console.log(userPath);
 // printFilesInDirectory(userPath);
 mdLinks(userPath)
+

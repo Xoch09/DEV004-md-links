@@ -1,31 +1,84 @@
-import { pathExists, isMD } from "./api.js";
-import { mdLinks } from "./mdLinks.js";
+import fs from 'fs';
+import axios from 'axios';
+import { mdLinks } from '../Index3.js';
 
-describe("mdLinks", () => {
-  // Mock de la función pathExists
-  jest.mock("./api.js", () => ({
-    pathExists: jest.fn(),
-    isMD: jest.fn(),
-  }));
+jest.mock('fs');
+jest.mock('axios');
 
-  it("debería resolver la promesa si el path existe y es un archivo MD", () => {
-    // Mock de pathExists para que retorne true
-    pathExists.mockReturnValue(true);
-    // Mock de isMD para que retorne true
-    isMD.mockReturnValue(true);
+describe('mdLinks', () => {
+  const consoleLogSpy = jest.spyOn(console, 'log');
 
-    return mdLinks("README.md").then(() => {
-      expect(pathExists).toHaveBeenCalledWith("README.md");
-      expect(isMD).toHaveBeenCalledWith("README.md");
-      expect(console.log).toHaveBeenCalledWith("Si existe");
-      expect(console.log).toHaveBeenCalledWith("Si es MD");
-    });
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
-  it("debería rechazar la promesa si el path no existe", () => {
-    // Mock de pathExists para que retorne false
-    pathExists.mockReturnValue(false);
+  test('should log "Archivo inválido" if file extension is not .md', () => {
+    mdLinks('file.txt');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Archivo invalido, prueba con un archivo md');
+  });
 
-    return expect(mdLinks("README.md")).rejects.toEqual("No existe");
+  test('should read file and log links', async () => {
+    const mockData = `
+      [Link 1](https://example.com/link1)
+      [Link 2](https://example.com/link2)
+    `;
+
+    fs.readFile.mockImplementation((file, encoding, callback) => {
+      callback(null, mockData);
+    });
+
+    axios.get.mockResolvedValueOnce({ file: 'file content' });
+
+    await mdLinks('file.md');
+
+    expect(fs.readFile).toHaveBeenCalled();
+    expect(axios.get).toHaveBeenCalledTimes(2);
+    expect(axios.get).toHaveBeenCalledWith('https://example.com/link1');
+    expect(axios.get).toHaveBeenCalledWith('https://example.com/link2');
+
+    expect(consoleLogSpy).toHaveBeenCalledWith('----------------------------------------------------------------');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Nombre: Link 1');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Link: https://example.com/link1');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Ruta: file.md');
+    expect(consoleLogSpy).toHaveBeenCalledWith('----------------------------------------------------------------');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Nombre: Link 2');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Link: https://example.com/link2');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Ruta: file.md');
+  });
+
+  test('should log error if reading file fails', async () => {
+    const mockError = new Error('File read error');
+    fs.readFile.mockImplementation((file, encoding, callback) => {
+      callback(mockError, null);
+    });
+
+    await mdLinks('file.md');
+
+    expect(fs.readFile).toHaveBeenCalled();
+    expect(axios.get).not.toHaveBeenCalled();
+    expect(consoleLogSpy).toHaveBeenCalledWith(`Error leyendo archivo file.md: ${mockError}`);
+  });
+
+  test('should log error if axios request fails', async () => {
+    const mockData = `
+      [Link 1](https://example.com/link1)
+    `;
+
+    fs.readFile.mockImplementation((file, encoding, callback) => {
+      callback(null, mockData);
+    });
+
+    const mockAxiosError = new Error('Request failed');
+    axios.get.mockRejectedValueOnce(mockAxiosError);
+
+    await mdLinks('file.md');
+
+    expect(fs.readFile).toHaveBeenCalled();
+    expect(axios.get).toHaveBeenCalled();
+    expect(consoleLogSpy).toHaveBeenCalledWith('--------------------');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Nombre: Link 1');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Link: https://example.com/link1');
+    expect(consoleLogSpy).toHaveBeenCalledWith('Ruta: file.md');
+    expect(consoleLogSpy).toHaveBeenCalledWith('error:', mockAxiosError.message);
   });
 });
