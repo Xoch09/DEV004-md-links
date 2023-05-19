@@ -8,7 +8,7 @@ import path from "path"
 export const pathExists = (pathfile) => {
     return fs.existsSync(pathfile)
 }
-
+//extensión de ruta
 export const isMD = (file) => {
     return path.extname(file)
 }

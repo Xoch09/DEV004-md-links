@@ -1,20 +1,24 @@
 //hacer de director de orquesta
 import { pathExists, isMD } from "./api.js"; //importa las funciones pathExists e isMD desde el archivo api.js
 
+
+//3.- si no es absoluta, vuelvela absoluta
 const mdLinks = (path, options) => {
-    //nueva promesa que envuelve la lógica asincrónica dentro de la función mdLinks
+    //nueva promesa asincrónica dentro de la función mdLinks
   return new Promise((resolve, reject) => {
     //función llamada mdLinks, acepta dos parámetros: path y options.
     // Código asincrónico, devuelve promesa
-    // 1. Verificar si existe
-    // 2. Preguntar si es MD
+    // a. Verificar si existe
+    // b. Preguntar si es MD
 
     if (pathExists(path)) {
       console.log("Si existe");
-      // Preguntar si es MD
+
+      // 4.- La ruta es MD
       if (isMD(path)) {
         console.log("Si es MD");
       }
+
       resolve();
     } else {
       reject("No existe");
@@ -25,5 +29,5 @@ const mdLinks = (path, options) => {
 
 };//final
 
-mdLinks("README.md");
-
+mdLinks("README.md", { validate: true});
+console.log(process.argv)
