@@ -12,5 +12,4 @@ const messageWelcome = `
 ╚═╝     ╚═╝╚═════╝       ╚══════╝╚═╝╚═╝  ╚══╝╚═╝  ╚═╝╚═════╝
 `
 
-messageError()
-messageWelcome()
+export{messageError, messageWelcome}
