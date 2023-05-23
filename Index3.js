@@ -23,10 +23,12 @@ export function mdLinks(file) {
         console.log(res);
         //bucle for, intera
         for (let i = 0; i < res.length; i++) {
-          console.log('-----------------------------------------------------------------------------');
-          console.log('Nombre:' + res[i].nombre);
-          console.log('Link:' + res[i].link);
-          console.log('Ruta:' + res[i].ruta);
+          //console.log('-----------------------------------------------------------------------------');
+          console.log('\x1b[31m%s\x1b[0m', '---------------------------------------------------------------------------');
+          //'\x1b[34m%s\x1b[0m' COLOR AZUL
+          console.log('\x1b[34m%s\x1b[0m','Nombre:' + res[i].nombre);
+          console.log('\x1b[35m%s\x1b[0m','Link:' + res[i].link);
+          console.log('\x1b[33m%s\x1b[0m', 'Ruta:' + res[i].ruta);
         }
         // 1.-mdlinks recibe un archivo como argumento 
         //2.-verifica si es un archivo Markdown
@@ -44,20 +46,23 @@ export function mdLinks(file) {
           axios.get(res[i].link)
           //si se resuelve correctamente se tiene respuesta y se imprime en console.log
             .then((response) => {
-              console.log('-------------------------------------------------------------------------');
-              console.log('Nombre:' + res[i].nombre);
-              console.log('Link:' + res[i].link);
-              console.log('Ruta:' + res[i].ruta);
+              //console.log('-------------------------------------------------------------------------');
+              console.log('\x1b[31m%s\x1b[0m', '---------------------------------------------------------------------------');
+              console.log('\x1b[34m%s\x1b[0m','Nombre:' + res[i].nombre);
+              console.log('\x1b[35m%s\x1b[0m','Link:' + res[i].link);
+              console.log('\x1b[33m%s\x1b[0m', 'Ruta:' + res[i].ruta);
               console.log('Status code: ' + response.status);
               console.log('Status message: ' + response.statusText);
             })
             //si la promesa devuelta es rechazada (error en la solicitud) 
             .catch((error) => {
-              console.log('---------------------------------------------------------------------------');
-              console.log('Nombre:' + res[i].nombre);
-              console.log('Link:' + res[i].link);
-              console.log('Ruta:' + res[i].ruta);
-              console.log('Error:', error.message);
+              //console.log('---------------------------------------------------------------------------');
+              //// Agrega color rojo al texto
+              console.log('\x1b[31m%s\x1b[0m', '---------------------------------------------------------------------------'); 
+              console.log('\x1b[34m%s\x1b[0m','Nombre:' + res[i].nombre);
+              console.log('\x1b[35m%s\x1b[0m','Link:' + res[i].link);
+              console.log('\x1b[33m%s\x1b[0m', 'Ruta:' + res[i].ruta);
+              console.log('\x1b[31m%s\x1b[0m','Error:', error.message);
             });
         }
       })
