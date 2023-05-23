@@ -76,29 +76,35 @@ export function mdLinks(file) {
 
 //ruta del archivo Markdown que se lee
 const readMd = (file) => {
+  //devuelve nueva promesa
   return new Promise((resolve, reject) => {
+   //readfile para leer el archivo especificado, leer con (formato de codificación utf8)
     fs.readFile(file, 'utf8', (err, data) => {
+      //si ocurre error la promesa se rechaza y devuelve mensaje de error
       if (err) {
         reject(`Error leyendo archivo ${file}: ${err}`);
         return;
       }
-      
+      // si es exitosa busca con un discriminador/filtro para encontrar coincidencias Expresion regular, máximo 50 caracteres
       const regex = /\[([^\]]{0,50})\]\((https?:\/\/[^\)\s#]+)/gm;
       let match;
+      //almacenar enlaces que se encuentran el el array
       const arrayUrl = [];
-
+//bucle "wile" para iterar, cada que se encuentre coincidencia se guarda en el array
       while ((match = regex.exec(data))) {
+        //agregar objetos al array
         arrayUrl.push({
           nombre: match[1],
           link: match[2],
           ruta: file
         });
       }
-      
+     // cuando se resuelven las coincidencias se resuelve la promesa con el array
       resolve(arrayUrl);
     });
   });
 }
-
+// propiedad en Node.js que devuelve un array, cada elemento del array es un argumento de línea de comando:1.- (process.argv[0]) es la ruta de Node.js, 2.-(process.argv[1]) es la ruta del script que se está ejecutando, 3.- siguiente elemento, el argunmento pasado
+// process.argv[2] "node script.js argumento", (argumento es el [2])
 const userPath = process.argv[2];
 mdLinks(userPath);
