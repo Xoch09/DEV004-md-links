@@ -1,33 +1,35 @@
 import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
+import { messageError, messageWelcome } from './mensaje.js';
 
 export function mdLinks(file) {
-  return new Promise((resolve, reject) => {
-    const ext = path.extname(file);
-    const pathResolve = path.resolve(file);
-
-    if (ext === '.md') {
-      readMd(pathResolve)
-        .then((res) => {
-          resolve(res);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    } else if (fs.lstatSync(file).isDirectory()) {
-      readDirectory(file)
-        .then((res) => {
-          resolve(res);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    } else {
-      reject('Archivo o directorio inválido, prueba con un archivo md o un directorio');
-    }
-  });
-}
+    return new Promise((resolve, reject) => {
+      const ext = path.extname(file);
+      const pathResolve = path.resolve(file);
+  
+      if (ext === '.md') {
+        readMd(pathResolve)
+          .then((res) => {
+            resolve(res);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      } else if (fs.lstatSync(file).isDirectory()) {
+        readDirectory(file)
+          .then((res) => {
+            resolve(res);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      } else {
+        reject('Archivo o directorio inválido, prueba con un archivo md o un directorio');
+      }
+    });
+  }
+  
 
 const readMd = (file) => {
   return new Promise((resolve, reject) => {
@@ -65,7 +67,7 @@ const readDirectory = (directory) => {
       });
       Promise.all(promises)
         .then((results) => {
-          const flattenedResults = results.reduce((acc, val) => acc.concat(val), []);
+        const flattenedResults = results.reduce((acc, val) => acc.concat(val),[]);
           resolve(flattenedResults);
         })
         .catch((error) => {
