@@ -1,6 +1,7 @@
 import { mdLinks } from './mdLinks.js';
 import axios from 'axios';
 
+
 //userphat guarda el tercer argumento del comando por el process.argv 2 (arreglo de argumentos)
 const userPath = process.argv[2];
 //se agrgan las opciones validate y stats
@@ -34,6 +35,8 @@ mdLinks(userPath)
               link: link.link,
               ruta: link.ruta,
               status: response.status,
+              //operador ternario, condicion////////////si "response.statusText es igual a 'OK'"
+              // entonces asigna el valor 'ok' a la propiedad ok, de lo contrario, si la condición es falsa, se asigna el valor 'fail' a la propiedad ok.
               ok: response.statusText === 'OK' ? 'ok' : 'fail',
             };
           })
