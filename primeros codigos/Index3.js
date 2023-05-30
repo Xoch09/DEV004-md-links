@@ -1,10 +1,11 @@
-import { error, log } from 'console';
+
 import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
 
+
 // función mdlinks
-export function mdLinks(file) {
+function mdLinks(file) {
   // para  obtener la extensión del archivo (se pasa como parametro "file"), con ext
   const ext = path.extname(file);
   //convertir ruta en absoluta
@@ -62,7 +63,7 @@ export function mdLinks(file) {
               console.log('\x1b[34m%s\x1b[0m','Nombre:' + res[i].nombre);
               console.log('\x1b[35m%s\x1b[0m','Link:' + res[i].link);
               console.log('\x1b[33m%s\x1b[0m', 'Ruta:' + res[i].ruta);
-              console.log('\x1b[31m%s\x1b[0m','Error:', error.message);
+              console.log('Error:', error.message);
             });
         }
       })
