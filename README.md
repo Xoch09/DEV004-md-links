@@ -1,19 +1,19 @@
-### 1.- MdLinks**       
+### 1.- MdLinks     
 
 Markdown es un lenguaje de marcado que facilita la aplicación de formato a un texto empleando una serie de caracteres de una forma especial. En principio, fue pensado para elaborar textos cuyo destino iba a ser la web con más rapidez y sencillez que si estuviésemos empleando directamente HTML. Y si bien ese suele ser el mejor uso que podemos darle, también podemos emplearlo para cualquier tipo de texto, independientemente de cual vaya a ser su destino. (1)
 
-### 2.- Descripción del proyecto** 
+### 2.- Descripción del proyecto
 Node.js es un entorno de ejecución para JavaScript, lo que permite ejecutar JavaScript en el entorno del sistema operativo, de esta forma podemos interactuar con el sistema.
 
 En MdLinks se construyó un programa que se ejecuta usando Node.js, esta conformado por una línea de comando **(CLI)** asi como una libreria propia de JS.
 
 El diseño de una *libreria propia*  es una gran experiencia pues logra que el desarrollador piense en la interfaz **(API)** y cómo podría ser usado por otros desarrolladores. 
 
-### 3.- Tabla de contenido** 
+### 3.- Tabla de contenido
 
-- [1.- MdLinks\*\*](#1--mdlinks)
-- [2.- Descripción del proyecto\*\*](#2--descripción-del-proyecto)
-- [3.- Tabla de contenido\*\*](#3--tabla-de-contenido)
+- [1.- MdLinks](#1--mdlinks)
+- [2.- Descripción del proyecto](#2--descripción-del-proyecto)
+- [3.- Tabla de contenido](#3--tabla-de-contenido)
 - [4.- Cómo ejecutar el proyecto](#4--cómo-ejecutar-el-proyecto)
 - [5.- Cómo utilizar el proyecto](#5--cómo-utilizar-el-proyecto)
 - [6. Prueba en consola](#6-prueba-en-consola)
@@ -30,77 +30,77 @@ gcm14-mdlinks es un CLI que verifica los links que contienen archivos.md, report
 
 ### 5.- Cómo utilizar el proyecto
 
-API
+API <br>
 
-Contiene la función mdLinks y las siguientes opciones
+Contiene la función mdLinks y las siguientes opciones <br>
 
 *1.- Validate:false* 
 
-href: URL encontrada.
-text: Texto que aparecía dentro del link (<a>).
-file: Ruta del archivo donde se encontró el link.
+href: URL encontrada.<br>
+text: Texto que aparecía dentro del link (<a>).<br>
+file: Ruta del archivo donde se encontró el link.<br>
 
 *2.-Validate:true*
 
-href: URL encontrada.
-text: Texto que aparecía dentro del link (<a>).
-file: Ruta del archivo donde se encontró el link.
-status: Código de respuesta HTTP.
-statusText: Mensaje fail,Not Found,Internal Server Error,Bad Request,Forbidden,etc en caso de fallo u ok,No Content,etc en caso de éxito. 
+href: URL encontrada.<br>
+text: Texto que aparecía dentro del link (<a>).<br>
+file: Ruta del archivo donde se encontró el link.<br>
+status: Código de respuesta HTTP.<br>
+statusText: Mensaje fail,Not Found,Internal Server Error,Bad Request,Forbidden,etc en caso de fallo u ok,No Content,etc en caso de éxito. <br>
 
-**Diagrama de flujo**
+**Diagrama de flujo**<br>
+![Diagrama de flujo](./Imagenes/API%20final.png)<br>
 
-![Diagráma API](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\API final.png)
+CLI<br>
 
-CLI
-
-Tiene los parámetros
+Tiene los parámetros<br>
 
 path-to-file: Ruta absoluta o relativa al archivo o directorio.
+<br>
+options: pueden ser<br>
 
-options: pueden ser
-
-**--validate:** el módulo hace una petición HTTP para averiguar si el link funciona o no. Si el link resulta en una redirección a una URL que responde ok, entonces consideraremos el link como ok.
-**--stats:** el output (salida) será un texto con estadísticas básicas sobre los links. (total y unique)
-**--validate --stats:** para obtener estadísticas que necesiten de los resultados de la validación. (total, unique y broken)
+**--validate:** el módulo hace una petición HTTP para averiguar si el link funciona o no. Si el link resulta en una redirección a una URL que responde ok, entonces consideraremos el link como ok.<br>
+**--stats:** el output (salida) será un texto con estadísticas básicas sobre los links. (total y unique)<br>
+**--validate --stats:** para obtener estadísticas que necesiten de los resultados de la validación. (total, unique y broken)<br>
 
 
-**Diagrama de flujo**
+**Diagrama de flujo** <br>
 
-![Diagrama CLI](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\diagrama CLI.jpg)
+![Diagrama de flujo](./Imagenes/diagrama%20CLI.jpg)<br>
+
 
 ### 6. Prueba en consola
 
 El siguiente es un ejemplo de cómo ejecutarlo.
 
- *node cli.js readmep.md*
-   ![Resultado leer archivo](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\readmedp.jpg)
+ *node cli.js readmep.md*<br>
+   ![Resultado leer archivo](./Imagenes/readmedp.jpg)<br>
 
- *node cli.js readmep.md --validate*
-  ![Resultado opción validate](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\validate options.jpg)
-
- *node cli.js readmep.md --stats*
-  ![Resultado opción stats](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\validate, stats options.jpg)
+ *node cli.js readmep.md --validate*<br>
+ ![Resultado opción validate](./Imagenes/validate%20options.jpg)<br>
+ 
+ *node cli.js readmep.md --stats*<br>
+  ![Resultado opción stats](./Imagenes/stats%20options.jpg)<br>
 
   *node cli.js readmep.md --validate --stats*
-  ![Resultado opción stats](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\validate, stats options.jpg)
+   ![Resultado opción validate stats](./Imagenes/validate,%20stats%20options.jpg)<br>
 
-### 7.- Referencias utilizadas
 
-👉(1) Markdown qué es: https://www.genbeta.com/guia-de-inicio/que-es-markdown-para-que-sirve-y-como-usarlo
-👉(2) ¿Qué es NODE?: https://www.youtube.com/watch?v=9U8EaVjuq6U&t=78s
-👉(3) Promesas: https://www.youtube.com/watch?v=pHBmmbDQl0o&t=280s
-👉(4) Asincronismo, elaborado por Xóchitl: ![Entendiendo el asincronísmo](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\ASINCRÓNISMO.jpg)
+### 7.- Referencias utilizadas<br>
 
+👉(1) Markdown qué es: https://www.genbeta.com/guia-de-inicio/que-es-markdown-para-que-sirve-y-como-usarlo<br>
+👉(2) ¿Qué es NODE?: https://www.youtube.com/watch?v=9U8EaVjuq6U&t=78s<br>
+👉(3) Promesas: https://www.youtube.com/watch?v=pHBmmbDQl0o&t=280s<br>
+👉(4) Asincronismo, elaborado por Xóchitl:<br> ![Entendiendo el asincronísmo](./Imagenes/ASINCRÓNISMO.jpg)<br>
 
 ### 8.- Crédito
 
-Elaborado por Xóchitl Luna Jara, con apoyo de los couches Jorge, Génesis y en la contención y apoyo emocional Araceli.
+Elaborado por Xóchitl Luna Jara, con apoyo de los couches Jorge, Génesis y en la contención y apoyo emocional Araceli.<br>
 
 lunajarax@gmail.com <br>
 https://www.linkedin.com/in/xochluja/ <br>
 https://github.com/Xoch09  <br>
 
-![yo](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\Xóchitl.jpg)
+![yo](./Imagenes/Xóchitl.jpg)
 
 
