@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Command line tool (CLI) that through Node.js reads and analyzes files in Markdown format, to verify the links they contain and report some statistics",
   "main": "cli.js",
+  "type": "module",
   "directories": {
     "test": "test"
   },
