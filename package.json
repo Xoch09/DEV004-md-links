@@ -10,6 +10,12 @@
     "scripts": {
     "test": "jest --coverage"
   },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xoch09/md-links.git"
+  },
+
   "keywords": [
     ".md",
     "markdown",
