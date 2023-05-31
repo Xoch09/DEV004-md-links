@@ -1,6 +1,6 @@
 {
-  "name": "md-linksfin",
-  "version": "0.1.6",
+  "name": "@xoch09/md-links",
+  "version": "0.1.9",
   "type": "module",
   "engines": {
     "node": ">=16.x"
