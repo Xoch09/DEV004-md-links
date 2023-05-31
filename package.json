@@ -14,7 +14,8 @@
     ".md",
     "markdown",
     "links",
-    "reader"
+    "reader",
+    "mdLinks"
   ],
   "author": "Xóchitl L.J",
   "license": "ISC",
