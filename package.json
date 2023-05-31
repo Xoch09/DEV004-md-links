@@ -1,18 +1,23 @@
 {
   "name": "@xoch09/md-links",
-  "version": "0.1.9",
+  "version": "1.0.0",
+  "description": "Command line tool (CLI) that through Node.js reads and analyzes files in Markdown format, to verify the links they contain and report some statistics",
+  "main": "cli.js",
   "type": "module",
   "engines": {
     "node": ">=16.x"
   },
-  "bootcamp": {
-    "createdAt": "2023-03-02T14:34:23.772Z",
-    "version": "5.6.0",
-    "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
-  },
-  "scripts": {
+    "scripts": {
     "test": "jest --coverage"
   },
+  "keywords": [
+    ".md",
+    "markdown",
+    "links",
+    "reader"
+  ],
+  "author": "Xóchitl L.J",
+  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.21.8",
     "@babel/preset-env": "^7.21.5",
