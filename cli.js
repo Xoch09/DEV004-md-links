@@ -99,7 +99,7 @@ mdLinks(userPath)
       console.log('\x1b[1m\x1b[31m%s\x1b[0m','\nEstadísticas:');
       console.log('\x1b[44m%s\x1b[0m','Total: ' + totalLinks);
       console.log('\x1b[45m%s\x1b[0m','Unique: ' + uniqueLinks);
-    }
+          }
   })
   .catch((error) => {
     console.log('\x1b[31m%s\x1b[0m', 'Error:', error);

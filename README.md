@@ -14,19 +14,17 @@ El diseño de una *libreria propia*  es una gran experiencia pues logra que el d
 - [1.- MdLinks](#1--mdlinks)
 - [2.- Descripción del proyecto](#2--descripción-del-proyecto)
 - [3.- Tabla de contenido](#3--tabla-de-contenido)
-- [4.- Cómo ejecutar el proyecto](#4--cómo-ejecutar-el-proyecto)
+- [4.- Cómo instalar el proyecto](#4--cómo-instalar-el-proyecto)
 - [5.- Cómo utilizar el proyecto](#5--cómo-utilizar-el-proyecto)
 - [6. Prueba en consola](#6-prueba-en-consola)
 - [7.- Referencias utilizadas](#7--referencias-utilizadas)
 - [8.- Crédito](#8--crédito)
 
 
-### 4.- Cómo ejecutar el proyecto
+### 4.- Cómo instalar el proyecto
 
-Para acceder se debe importar con require('sgcm14-mdlinks').
-gcm14-mdlinks es un CLI que verifica los links que contienen archivos.md, reporta estadísticas de los links y si estan rotos.
+npm install @xoch09/md-links
 
-*$ npm install sgcm14-mdlinks*
 
 ### 5.- Cómo utilizar el proyecto
 
@@ -49,7 +47,7 @@ status: Código de respuesta HTTP.<br>
 statusText: Mensaje fail,Not Found,Internal Server Error,Bad Request,Forbidden,etc en caso de fallo u ok,No Content,etc en caso de éxito. <br>
 
 **Diagrama de flujo**<br>
-![Diagrama de flujo](./Imagenes/API%20final.png)<br>
+![Diagrama de flujo](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/API%20final.png)<br>
 
 CLI<br>
 
@@ -66,7 +64,7 @@ options: pueden ser<br>
 
 **Diagrama de flujo** <br>
 
-![Diagrama de flujo](./Imagenes/diagrama%20CLI.jpg)<br>
+![Diagrama de flujo](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/diagrama%20CLI.jpg)<br>
 
 
 ### 6. Prueba en consola
@@ -74,16 +72,16 @@ options: pueden ser<br>
 El siguiente es un ejemplo de cómo ejecutarlo.
 
  *node cli.js readmep.md*<br>
-   ![Resultado leer archivo](./Imagenes/readmedp.jpg)<br>
+   ![Resultado leer archivo](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/readmedp.jpg)<br>
 
  *node cli.js readmep.md --validate*<br>
- ![Resultado opción validate](./Imagenes/validate%20options.jpg)<br>
+ ![Resultado opción validate](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/validate%20options.jpg)<br>
  
  *node cli.js readmep.md --stats*<br>
-  ![Resultado opción stats](./Imagenes/stats%20options.jpg)<br>
+  ![Resultado opción stats](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/stats%20options.jpg)<br>
 
   *node cli.js readmep.md --validate --stats*
-   ![Resultado opción validate stats](./Imagenes/validate,%20stats%20options.jpg)<br>
+   ![Resultado opción validate stats](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/validate%2C%20stats%20options.jpg)<br>
 
 
 ### 7.- Referencias utilizadas<br>
@@ -91,7 +89,7 @@ El siguiente es un ejemplo de cómo ejecutarlo.
 👉(1) Markdown qué es: https://www.genbeta.com/guia-de-inicio/que-es-markdown-para-que-sirve-y-como-usarlo<br>
 👉(2) ¿Qué es NODE?: https://www.youtube.com/watch?v=9U8EaVjuq6U&t=78s<br>
 👉(3) Promesas: https://www.youtube.com/watch?v=pHBmmbDQl0o&t=280s<br>
-👉(4) Asincronismo, elaborado por Xóchitl:<br> ![Entendiendo el asincronísmo](./Imagenes/ASINCRÓNISMO.jpg)<br>
+👉(4) Asincronismo, elaborado por Xóchitl:<br> ![Entendiendo el asincronísmo](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/ASINCR%C3%93NISMO.jpg)<br>
 
 ### 8.- Crédito
 
@@ -101,6 +99,6 @@ lunajarax@gmail.com <br>
 https://www.linkedin.com/in/xochluja/ <br>
 https://github.com/Xoch09  <br>
 
-![yo](./Imagenes/Xóchitl.jpg)
+![yo](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/X%C3%B3chitl.jpg)
 
 
