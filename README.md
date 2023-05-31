@@ -50,7 +50,7 @@ statusText: Mensaje fail,Not Found,Internal Server Error,Bad Request,Forbidden,e
 
 **Diagrama de flujo**
 
-![Diagráma API](./Imagenes/API%20final.png)
+![Diagráma API](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\API final.png)
 
 CLI
 
@@ -66,40 +66,41 @@ options: pueden ser
 
 
 **Diagrama de flujo**
-![Diagrama CLI](./Imagenes/diagrama%20CLI.jpg)
+
+![Diagrama CLI](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\diagrama CLI.jpg)
 
 ### 6. Prueba en consola
 
 El siguiente es un ejemplo de cómo ejecutarlo.
 
  *node cli.js readmep.md*
-   ![Resultado leer archivo](./Imagenes/readmedp.jpg)
+   ![Resultado leer archivo](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\readmedp.jpg)
 
  *node cli.js readmep.md --validate*
-  ![Resultado opción validate](./Imagenes/validate%20options.jpg)
+  ![Resultado opción validate](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\validate options.jpg)
 
  *node cli.js readmep.md --stats*
-  ![Resultado opción stats](./Imagenes/stats%20options.jpg)
+  ![Resultado opción stats](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\validate, stats options.jpg)
 
   *node cli.js readmep.md --validate --stats*
-  ![Resultado opción stats](./Imagenes/validate,%20stats%20options.jpg)
+  ![Resultado opción stats](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\validate, stats options.jpg)
 
 ### 7.- Referencias utilizadas
 
 👉(1) Markdown qué es: https://www.genbeta.com/guia-de-inicio/que-es-markdown-para-que-sirve-y-como-usarlo
 👉(2) ¿Qué es NODE?: https://www.youtube.com/watch?v=9U8EaVjuq6U&t=78s
 👉(3) Promesas: https://www.youtube.com/watch?v=pHBmmbDQl0o&t=280s
-👉(4) Asincronismo, elaborado por Xóchitl: ![Entendiendo el asincronísmo](./Imagenes/ASINCRÓNISMO.jpg)
+👉(4) Asincronismo, elaborado por Xóchitl: ![Entendiendo el asincronísmo](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\ASINCRÓNISMO.jpg)
 
 
 ### 8.- Crédito
 
 Elaborado por Xóchitl Luna Jara, con apoyo de los couches Jorge, Génesis y en la contención y apoyo emocional Araceli.
 
-lunajarax@gmail.com
-https://www.linkedin.com/in/xochluja/
-https://github.com/Xoch09
+lunajarax@gmail.com <br>
+https://www.linkedin.com/in/xochluja/ <br>
+https://github.com/Xoch09  <br>
 
-![Entendiendo el asincronísmo](./Imagenes/Xóchitl.jpg)
+![yo](C:\Users\Laboratoria\xoch\DEV004-md-links\Imagenes\Xóchitl.jpg)
 
 
