@@ -99,6 +99,6 @@ lunajarax@gmail.com <br>
 https://www.linkedin.com/in/xochluja/ <br>
 https://github.com/Xoch09  <br>
 
-![yo](https://github.com/Xoch09/DEV004-md-links/blob/main/Imagenes/X%C3%B3chitl.jpg)
+
 
 
